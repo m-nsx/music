@@ -71,6 +71,12 @@
     font-display: swap;
 }
 
+
+
+html {
+    height: 100%;
+}
+
 body {
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -78,7 +84,9 @@ body {
     font-size: var(--font-size-base);
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -153,10 +161,10 @@ nav {
     opacity: 0.95;
 }
 
-.tline {
+.tiles, .tline {
     /* Use Flexbox so tiles in a row always fill the full width and
        grow equally; --cols controls the target items per row. */
-    --cols: 3; /* default columns; override on .tline or :root as needed */
+    --cols: 3; /* default columns; override on .tiles or :root as needed */
     --gap: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -167,7 +175,7 @@ nav {
     align-items: stretch; /* ensure items stretch to the row height */
 }
 
-.tline .tile {
+.tiles .tile, .tline .tile {
     display: flex;
     flex-direction: column;
     align-self: stretch; /* stretch to match the tallest item in the row */
@@ -265,6 +273,11 @@ nav {
     font-family: var(--font-akira);
     font-size: 1em;
     margin-top: 20px;
+}
+
+/* Ensure main content grows to fill available vertical space so footer stays at bottom */
+main.content {
+    flex: 1 0 auto;
 }
 
 *, *::before, *::after {
