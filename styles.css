@@ -17,7 +17,7 @@
 
 @font-face {
     font-family: 'nNiely';
-    src: url('assets/fonts/nNiely/Niely.ttf') format('truetype');
+    src: url('assets/fonts/nNiely/nNiely.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
     font-family: 'Akira';
-    src: url("assets/fonts/akira/Akira Expanded Demo.otf") format('opentype');
+    src: url("assets/fonts/akira/Akira Expanded Demo.woff2") format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -180,11 +180,21 @@ nav {
     line-height: 1.12;
 }
 
-.tile-description {
+.tile-subtitle {
     font-size: 1.2em;
+    font-family: var(--font-summerdreamsans);
     margin: 0 0 2px 0;
     line-height: 1.18;
     display: block;
+    color: var(--accent-color);
+}
+
+.tile-description {
+    font-size: 1em;
+    font-family: var(--font-cafe);
+    margin: 0;
+    line-height: 1.4;
+    color: var(--secondary-color);
 }
 
 .tile-content {
@@ -195,35 +205,28 @@ nav {
     position: absolute;
     left: 16px;
     right: 16px;
+    bottom: 16px;
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
     gap: 12px;
 }
 
-.tile-bottom {
-    bottom: 16px;
+.tile-desc-wrap {
+    flex: 1 1 auto;
+    align-self: flex-end;
+    margin: 0;
 }
 
 .tile-image-wrap {
-    flex: 1 1 0;
+    flex: 0 0 180px;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.tile-desc-wrap {
-    font-family: var(--font-cafe);
-    flex: 1 1 0;
-    margin-bottom: 8px;
-}
-
-.tile-image-wrap .tile-cover {
+.tile-cover {
     width: 100%;
     height: auto;
-}
-
-.tile-description.accent {
-    color: var(--accent-color);
-}
-
-@media (max-width: 800px) {
-    .tiles { flex-direction: column; }
-    .nav-list a { font-size: 1.2em; }
+    max-height: 160px;
+    object-fit: cover;
 }
