@@ -71,6 +71,21 @@
     font-display: swap;
 }
 
+body {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-akira);
+    font-size: var(--font-size-base);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
 .topbar {
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -109,25 +124,11 @@
     transform: scaleY(1.6);
 }
 
-body {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    font-family: var(--font-akira);
-    font-size: var(--font-size-base);
-    margin: 0;
-    padding: 0;
-}
-
-nav {
-    margin: 0;
-    padding: 0;
-}
-
 .nav-list {
     list-style: none;
     display: flex;
     gap: 20px;
-    margin: 0;
+    margin-right: 30px;
     padding: 0;
     align-items: center;
 }
@@ -152,16 +153,27 @@ nav {
     opacity: 0.95;
 }
 
-.tiles {
+.tline {
+    /* Use Flexbox so tiles in a row always fill the full width and
+       grow equally; --cols controls the target items per row. */
+    --cols: 3; /* default columns; override on .tline or :root as needed */
+    --gap: 20px;
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    align-items: stretch; /* ensure items stretch to the row height */
 }
 
-.tiles .tile {
-    flex: 1 1 45%;
+.tline .tile {
     display: flex;
     flex-direction: column;
+    align-self: stretch; /* stretch to match the tallest item in the row */
+    min-height: 0; /* allow flex children to shrink properly */
+    /* flex-basis calculation: subtract gaps across the row so items fill 100% */
+    flex: 1 1 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
 }
 
 .tile {
@@ -170,12 +182,11 @@ nav {
     padding: 20px;
     box-sizing: border-box;
     font-family: var(--font-summerdreamsans);
-    margin: 10px 0;
+    margin: 0;
     vertical-align: top;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    /* no fixed min-height so tile height adapts to content */
 }
 
 .tile-content {
@@ -230,4 +241,32 @@ nav {
     height: auto;
     object-fit: cover;
     object-position: center;
+}
+
+/* Utility to force a tile to take a full row (insert a manual line break) */
+.tile.full-row { 
+    /* kept for compatibility: make tile span entire row */
+    flex-basis: 100%;
+}
+
+.tile-break {
+    /* empty element to force a line break between tiles */
+    flex-basis: 100%;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+    font-family: var(--font-akira);
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
