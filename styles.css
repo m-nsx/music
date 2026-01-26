@@ -8,11 +8,12 @@
     --font-stretchpro: 'StretchPro', sans-serif;
     --font-size-base: 16px;
     --spacing-unit: 8px;
+    --font-default: 'Impact', sans-serif;
 }
 
 @font-face {
     font-family: 'nNiely';
-    src: url('assets/fonts/nNiely/nNiely.woff2') format('woff2');
+    src: url('assets/fonts/nNiely/Niely.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -20,7 +21,7 @@
 
 @font-face {
     font-family: 'Akira';
-    src: url("assets/fonts/akira/Akira Expanded Demo.woff2") format('woff2');
+    src: url("assets/fonts/akira/Akira Expanded Demo.otf") format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -28,14 +29,44 @@
 
 @font-face {
     font-family: 'StretchPro';
-    src: url("assets/fonts/StretchPro/StretchPro.woff2") format('woff2');
+    src: url("assets/fonts/StretchPro/StretchPro.otf") format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 .topbar {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand-logo {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.brand-title {
     font-family: var(--font-niely);
+    font-size: 2.5em;
+    margin: 0;
 }
 
 body {
@@ -47,63 +78,71 @@ body {
     padding: 0;
 }
 
-home_button a {
-    font-family: var(--font-family3);
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.18s ease, opacity 0.18s ease;
-}
-
-home_button a:visited,
-home_button a:active {
-    color: var(--accent-color);
-}
-
 nav {
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-    font-family: var(--font-akira);
-    font-size: var(--font-size-base);
     margin: 0;
     padding: 0;
 }
 
-nav a {
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-list a {
     font-family: var(--font-akira);
     font-style: italic;
     color: var(--primary-color);
     text-decoration: none;
+    font-size: 2.5em;
     transition: color 0.18s ease, opacity 0.18s ease;
 }
 
-nav a:visited,
-nav a:active {
+.nav-list a:visited,
+.nav-list a:active {
     color: var(--primary-color);
 }
 
-nav a:hover,
-nav a:focus {
+.nav-list a:hover,
+.nav-list a:focus {
     color: var(--accent-color);
     opacity: 0.95;
 }
 
-tile {
+.tiles {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.tile {
     background-color: var(--tertiary-color);
-    text-align: left;
-    align-items: center;
-    display: block;
-    padding-left: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--secondary-color);
+    padding: 16px;
+    box-sizing: border-box;
     font-family: var(--font-akira);
-    margin: 10px;
+    margin: 10px 0;
+    flex: 1 1 0;
+    min-height: 200px;
 }
 
-tile_title {
-    font-size: 3em;
+.tile-title {
+    font-size: 2em;
+    margin: 0 0 8px 0;
 }
 
-tile_description {
-    font-size: 1.2em;
+.tile-description {
+    font-size: 1.1em;
+    margin: 0 0 12px 0;
+}
+
+.tile-cover {
+    height: 250px;
+    display: block;
+    margin-top: 12px;
 }
 
 /* h1, h2, h3, h4, h5, h6 {

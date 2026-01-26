@@ -8,42 +8,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body style = "background-color: var(--primary-color); color: var(--secondary-color)">
-    
-    <div class="topbar" style = "background-color: var(--secondary-color); color: var(--primary-color); padding: 10px; height: 100px; display: flex; align-items: center;">      
-        <div style = "width: 30%; text-align: left; display: flex; align-items: center;">
-            <a href = "index.html">
-                <img src = "assets/img/icon.png" alt = "mnsx logo" style = "height: 80px; margin-right: 20px;">
+<body>
+
+    <header class="topbar">
+        <div class="topbar-left">
+            <a class="brand" href="index.html">
+                <img src="assets/img/icon.png" alt="mnsx logo" class="brand-logo">
+                <h1 class="brand-title">MNSX</h1>
             </a>
-            <home_button style = "transform: scaleY(2);">
-                <a href = "index.html" style = "text-decoration: none; font-size: 2.5em;">MNSX</a>
-            </home_button>
         </div>
-        <div style = "width: 70%; text-align: right; padding: 10px;">
+        <div class="topbar-right">
             <nav>
-                <a href = "index.html" style = "margin: 10px; text-decoration: none; font-size: 2.5em;">Home</a>
-                <a href = "about.html" style = "margin: 10px; text-decoration: none; font-size: 2.5em;">About</a>
-                <a href = "projects.html" style = "margin: 10px; text-decoration: none; font-size: 2.5em;">Projects</a>
-                <a href = "contact.html" style = "margin: 10px; text-decoration: none; font-size: 2.5em;">Contact</a>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </nav>
         </div>
-    </div>
+    </header>
 
-    <div style = "padding: 10px;display: flex;">
+    <main class="content">
+        <section class="tiles">
+            <article class="tile">
+                <h2 class="tile-title">NEW RELEASE</h2>
+                <p class="tile-description">EXPERIMENTS vol. I</p>
+                <img src="assets/img/exp_cover.png" alt="album cover art" class="tile-cover">
+            </article>
 
-        <tile style = "width: 35%; height: 500px; background-color: var(--tertiary-color); color: var(--secondary-color);">
-            <tile_title style = "margin: 10px;">NEW RELEASE</tile_title>
-            <br>
-            <tile_description style = "margin: 10px;">EXPERIMENTS vol . I</tile_description>
-            <img src = "assets/img/exp_cover.png" alt = "album cover art" style = "height: 250px; margin: 10px; float: right;">
-        </tile>
-
-        <tile style = "max-width: 50%; height: 500px; background-color: var(--tertiary-color); color: var(--secondary-color);">
-            <tile_title>NEW RELEASE</tile_title>
-            <br>
-            <tile_description>style</tile_description>
-        </tile>
-
-    </div>
+            <article class="tile">
+                <h2 class="tile-title">NEW RELEASE</h2>
+                <p class="tile-description">style</p>
+            </article>
+        </section>
+    </main>
 
 </body>
