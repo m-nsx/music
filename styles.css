@@ -1,36 +1,84 @@
 :root{
-    --primary-color: #e4e2dd;
+    --primary-color: #9e9d99;
     --secondary-color: #2b2b2b;
-    --accent-color: #ffffff;
-    --font-family: "Impact", sans-serif;
+    --tertiary-color: #c1c1bd;
+    --accent-color: #ff4040;
+    --font-akira: 'Akira', sans-serif;
+    --font-niely: 'nNiely', sans-serif;
+    --font-stretchpro: 'StretchPro', sans-serif;
     --font-size-base: 16px;
     --spacing-unit: 8px;
 }
 
+@font-face {
+    font-family: 'nNiely';
+    src: url('assets/fonts/nNiely/Niely.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Akira';
+    src: url("assets/fonts/akira/Akira Expanded Demo.otf") format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'StretchPro';
+    src: url("assets/fonts/StretchPro/StretchPro.otf") format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.topbar {
+    font-family: var(--font-niely);
+}
+
 body {
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-    font-family: var(--font-family);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-akira);
     font-size: var(--font-size-base);
     margin: 0;
     padding: 0;
+}
+
+home_button a {
+    font-family: var(--font-family3);
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+home_button a:visited,
+home_button a:active {
+    color: var(--accent-color);
 }
 
 nav {
     background-color: var(--bg-color);
     color: var(--primary-color);
-    font-family: var(--font-family);
+    font-family: var(--font-akira);
     font-size: var(--font-size-base);
     margin: 0;
     padding: 0;
 }
 
 nav a {
-    font-family: var(--font-family);
+    font-family: var(--font-akira);
+    font-style: italic;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.18s ease, opacity 0.18s ease;
 }
 
-nav a {
-    transition: color 0.18s ease, opacity 0.18s ease;
+nav a:visited,
+nav a:active {
+    color: var(--primary-color);
 }
 
 nav a:hover,
@@ -39,9 +87,28 @@ nav a:focus {
     opacity: 0.95;
 }
 
-h1, h2, h3, h4, h5, h6 {
+tile {
+    background-color: var(--tertiary-color);
+    text-align: left;
+    align-items: center;
+    display: block;
+    padding-left: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: var(--font-akira);
+    margin: 10px;
+}
+
+tile_title {
+    font-size: 3em;
+}
+
+tile_description {
+    font-size: 1.2em;
+}
+
+/* h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
-    font-family: var(--font-family);
+    font-family: var(--font-akira);
     margin-top: var(--spacing-unit);
     margin-bottom: var(--spacing-unit);
-}
+} */
