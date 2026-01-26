@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: 'nNiely';
-    src: url('assets/fonts/nNiely/Niely.ttf') format('truetype');
+    src: url('assets/fonts/nNiely/nNiely.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'Akira';
-    src: url("assets/fonts/akira/Akira Expanded Demo.otf") format('opentype');
+    src: url("assets/fonts/akira/Akira Expanded Demo.woff2") format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
     font-family: 'StretchPro';
-    src: url("assets/fonts/StretchPro/StretchPro.otf") format('opentype');
+    src: url("assets/fonts/StretchPro/StretchPro.woff2") format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
