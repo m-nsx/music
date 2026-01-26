@@ -1,0 +1,47 @@
+:root{
+    --primary-color: #e4e2dd;
+    --secondary-color: #2b2b2b;
+    --accent-color: #ffffff;
+    --font-family: "Impact", sans-serif;
+    --font-size-base: 16px;
+    --spacing-unit: 8px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    font-family: var(--font-family);
+}
+
+nav a {
+    transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--accent-color);
+    opacity: 0.95;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    margin-top: var(--spacing-unit);
+    margin-bottom: var(--spacing-unit);
+}
