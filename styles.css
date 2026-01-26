@@ -6,6 +6,10 @@
     --font-akira: 'Akira', sans-serif;
     --font-niely: 'nNiely', sans-serif;
     --font-stretchpro: 'StretchPro', sans-serif;
+    --font-primetime: 'Primetime', sans-serif;
+    --font-proelium: 'Proelium', sans-serif;
+    --font-summerdreamsans: 'SummerDreamSans', sans-serif;
+    --font-cafe: 'cafe', sans-serif;
     --font-size-base: 16px;
     --spacing-unit: 8px;
     --font-default: 'Impact', sans-serif;
@@ -13,7 +17,7 @@
 
 @font-face {
     font-family: 'nNiely';
-    src: url('assets/fonts/nNiely/Niely.ttf') format('truetype');
+    src: url('assets/fonts/nNiely/nNiely.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -21,7 +25,7 @@
 
 @font-face {
     font-family: 'Akira';
-    src: url("assets/fonts/akira/Akira Expanded Demo.otf") format('opentype');
+    src: url("assets/fonts/akira/Akira Expanded Demo.woff2") format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -29,7 +33,39 @@
 
 @font-face {
     font-family: 'StretchPro';
-    src: url("assets/fonts/StretchPro/StretchPro.otf") format('opentype');
+    src: url("assets/fonts/StretchPro/StretchPro.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Primetime';
+    src: url("assets/fonts/primetime/primetime.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proelium';
+    src: url("assets/fonts/proelium/GTProelium.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SummerDreamSans';
+    src: url("assets/fonts/SummerDreamSans/SummerDreamSans.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'cafe';
+    src: url("assets/fonts/cafe/Louis\ George\ Cafe.woff2") format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -64,7 +100,7 @@
 }
 
 .brand-title {
-    font-family: var(--font-niely);
+    font-family: var(--font-stretchpro);
     font-size: 2.5em;
     margin: 0;
 }
@@ -115,39 +151,58 @@ nav {
 .tiles {
     display: flex;
     gap: 20px;
-    padding: 10px;
+    padding: 20px;
 }
 
 .tile {
     background-color: var(--tertiary-color);
     color: var(--secondary-color);
-    padding: 16px;
+    padding: 20px;
     box-sizing: border-box;
-    font-family: var(--font-akira);
+    font-family: var(--font-summerdreamsans);
     margin: 10px 0;
-    flex: 1 1 0;
-    min-height: 200px;
+    vertical-align: top;
+    position: relative;
+    min-height: 500px;
 }
 
 .tile-title {
-    font-size: 2em;
-    margin: 0 0 8px 0;
+    font-size: 2.6em;
+    margin: 0 0 2px 0;
+    line-height: 1.12;
 }
 
 .tile-description {
-    font-size: 1.1em;
-    margin: 0 0 12px 0;
-}
-
-.tile-cover {
-    height: 250px;
+    font-size: 1.2em;
+    margin: 0 0 2px 0;
+    line-height: 1.18;
     display: block;
-    margin-top: 12px;
 }
 
-/* h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
-    font-family: var(--font-akira);
-    margin-top: var(--spacing-unit);
-    margin-bottom: var(--spacing-unit);
-} */
+.tile-content {
+    display: block;
+}
+
+.tile-bottom {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.tile-image-wrap {
+    flex: 1 1 0;
+}
+
+.tile-desc-wrap {
+    font-family: var(--font-cafe);
+    flex: 1 1 0;
+    margin-bottom: 8px;
+}
+
+.tile-image-wrap .tile-cover {
+    width: 100%;
+    height: auto;
+}

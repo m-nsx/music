@@ -14,12 +14,12 @@
         <div class="topbar-left">
             <a class="brand" href="index.html">
                 <img src="assets/img/icon.png" alt="mnsx logo" class="brand-logo">
-                <h1 class="brand-title">MNSX</h1>
+                <h1 class="brand-title" style = "transform: scaleY(1.6)">MNSX</h1>
             </a>
         </div>
         <div class="topbar-right">
             <nav>
-                <ul class="nav-list">
+                <ul class="nav-list" style = "margin-right: 20px;">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
@@ -29,18 +29,31 @@
         </div>
     </header>
 
-    <main class="content">
-        <section class="tiles">
-            <article class="tile">
-                <h2 class="tile-title">NEW RELEASE</h2>
-                <p class="tile-description">EXPERIMENTS vol. I</p>
-                <img src="assets/img/exp_cover.png" alt="album cover art" class="tile-cover">
-            </article>
+    <main class = "content">
+        <section class = "tiles">
 
-            <article class="tile">
-                <h2 class="tile-title">NEW RELEASE</h2>
-                <p class="tile-description">style</p>
-            </article>
+            <tile class = "tile" style = "width: 50%;">
+                <div class="tile-content">
+                    <div class="tile-text">
+                        <h2 class="tile-title">ORIGINAL CREATIONS & ELECTRONIC EXPLORATION</h2>
+                        <p class="tile-description" style = "color: var(--accent-color);">NEW RELEASE *</p>
+                    </div>
+                    <div class="tile-bottom">
+                        <div class="tile-desc-wrap" style = "vertical-align: bottom;">
+                            <p class="tile-description">EXPERIMENTAL</p>
+                        </div>
+                        <div class="tile-image-wrap">
+                            <img src="assets/img/exp_cover.png" alt="album cover art" class="tile-cover">
+                        </div>
+                    </div>
+                </div>
+            </tile>
+
+            <tile class = "tile" style = "width: 50%;">
+                <h2 class="tile-title">TEMPLATE</h2>
+                <p class="tile-description" style = "color: var(--accent-color);">for new item only *</p>
+            </tile>
+
         </section>
     </main>
 
