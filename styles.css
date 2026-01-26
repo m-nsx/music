@@ -129,6 +129,11 @@ nav {
     font-family: var(--font-akira);
     font-size: 2.5em;
     margin: 0;
+    transition: color 0.18s ease;
+}
+
+.brand-title:hover {
+    color: var(--accent-color);
 }
 
 .nav-list {
@@ -153,10 +158,12 @@ nav {
     color: var(--primary-color);
 }
 
-.nav-list a:hover,
-.nav-list a:focus {
+.nav-list a:hover {
     color: var(--accent-color);
-    opacity: 0.95;
+}
+
+.nav-list a.focus {
+    color: var(--tertiary-color);
 }
 
 .tiles, .tline {
@@ -361,8 +368,7 @@ nav {
 }
 
 /* Ensure hover/focus does not change color or add underline */
-.footer a:hover,
-.footer a:focus {
+.footer a:hover {
     color: var(--accent-color);
     text-decoration: none;
 }

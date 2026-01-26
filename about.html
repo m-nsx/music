@@ -2,43 +2,127 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mnsx</title>
-    <link rel="stylesheet" href="styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>About — MNSX</title>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		/* Page-specific sober layout matching the site's DA */
+		.about-wrap {
+			font-family: var(--font-cafe);
+			max-width: 1100px;
+			margin: 48px auto;
+			padding: 28px;
+			display: grid;
+			grid-template-columns: 360px 1fr;
+			gap: 32px;
+			align-items: start;
+		}
+
+		.about-card { background: transparent; padding: 0; }
+
+		.about-portrait {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.about-portrait img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+		.about-title {
+			font-family: var(--font-akira);
+			font-size: 5rem;
+			margin: 0;
+			color: var(--secondary-color);
+		}
+
+		.about-sub {
+			color: var(--tertiary-color);
+			margin-top: 6px;
+			margin-bottom: 18px;
+			font-family: var(--font-akira);
+		}
+
+		.about-text { 
+			color: var(--secondary-color);
+			line-height: 1.6;
+			text-align: justify;
+		}
+
+		.about-list { margin-top: 14px; }
+
+		.about-cta {
+			display: inline-block;
+			color: var(--secondary-color);
+			text-decoration: none;
+			font-weight: 700;
+			font-family: var(--font-akira);
+			font-size: 2.5em;
+			font-style: italic;
+			transition: color 0.18s ease;	
+		}
+
+		.about-cta:hover {
+			color: var(--accent-color);
+		}
+
+		@media (max-width: 880px) {
+			.about-wrap { grid-template-columns: 1fr; gap: 18px; padding: 20px; }
+			.about-portrait { height: 300px; }
+		}
+  	</style>
+
 </head>
 
 <body>
 
-    <header class="topbar">
-        <div class="topbar-left">
-            <a class="brand" href="index.html">
-                <img src="assets/img/icon.png" alt="mnsx logo" class="brand-logo">
-                <h1 class="brand-title">MNSX</h1>
-            </a>
-        </div>
-        <div class="topbar-right">
-            <nav>
-                <ul class="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+	<header class="topbar">
+		<div class="topbar-left">
+			<a class="brand" href="index.html">
+				<img src="assets/img/icon.png" alt="mnsx logo" class="brand-logo">
+				<h1 class="brand-title">MNSX</h1>
+			</a>
+		</div>
+		<div class="topbar-right">
+			<nav>
+				<ul class="nav-list">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="projects.html">Projects</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
-    <main class = "content">
-        ABOUT PAGE
-    </main>
+	<main class="content">
+		<section class="about-wrap">
+			<div class="about-card">
+				<div class="about-portrait">
 
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
-        </div>
-        <p>&copy; 2024 MNSX</p>
-    </footer>
+					<img src="assets/img/me.png" alt="moi ?">
+
+				</div>
+			</div>
+
+			<div>
+				<h2 class="about-title">MNSX</h2>
+			<div class="about-sub">EXPERIMENTAL MUSIC</div>
+				<div class="about-text">
+					<p>Music has always been a space for exploration and intuition. What began as curiosity—experimenting with sounds, textures, and software—quickly turned into a deep fascination with electronic music as a creative process. Working between sound creation and experimentation, I found an interest in shaping atmospheres and creating evocative soundscapes.</p>
+					<p>Over time, my practice has shifted towards ambient and experimental genres, where textures, nuances and immersion prevail. Inspired by electronic music, abstract soundscapes, and audiovisual art, I explore music as an immersive experience.</p>
+					<p>If you would like to make a suggestion, ask a question, or simply chat, please feel free to contact me.</p>
+					<a class="about-cta" href="contact.html">GET IN TOUCH</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+  	<footer class="footer">
+      <div class="footer-links">
+         <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <p>&copy; 2024 MNSX</p>
+   </footer>
 
 </body>
 </html>
