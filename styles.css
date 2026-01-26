@@ -184,6 +184,41 @@ nav {
     flex: 1 1 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
 }
 
+/* Fallback classes (use these if the flex/calc approach fails on the host)
+   Add one of these classes to the `.tiles` element: `cols-2`, `cols-3`, `cols-4` */
+.tiles.cols-1 .tile {
+    flex: none;
+    width: 100%;
+    margin-bottom: var(--gap);
+}
+.tiles.cols-2 .tile {
+    flex: none;
+    width: calc((100% - var(--gap)) / 2);
+    margin-right: var(--gap);
+    margin-bottom: var(--gap);
+}
+.tiles.cols-2 .tile:nth-child(2n) {
+    margin-right: 0;
+}
+.tiles.cols-3 .tile {
+    flex: none;
+    width: calc((100% - 2 * var(--gap)) / 3);
+    margin-right: var(--gap);
+    margin-bottom: var(--gap);
+}
+.tiles.cols-3 .tile:nth-child(3n) {
+    margin-right: 0;
+}
+.tiles.cols-4 .tile {
+    flex: none;
+    width: calc((100% - 3 * var(--gap)) / 4);
+    margin-right: var(--gap);
+    margin-bottom: var(--gap);
+}
+.tiles.cols-4 .tile:nth-child(4n) {
+    margin-right: 0;
+}
+
 .tile {
     background-color: var(--tertiary-color);
     color: var(--secondary-color);
