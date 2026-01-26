@@ -160,6 +160,8 @@ nav {
 
 .tiles .tile {
     flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
 }
 
 .tile {
@@ -170,8 +172,14 @@ nav {
     font-family: var(--font-summerdreamsans);
     margin: 10px 0;
     vertical-align: top;
-    position: relative;
-    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* no fixed min-height so tile height adapts to content */
+}
+
+.tile-content {
+    display: block;
 }
 
 .tile-title {
@@ -197,29 +205,22 @@ nav {
     color: var(--secondary-color);
 }
 
-.tile-content {
-    display: block;
-}
-
 .tile-bottom {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 12px;
+    margin-top: auto; /* pousse le bas en bas de la tuile sans fixer la hauteur */
+    padding-top: 8px;
 }
 
-.tile-desc-wrap {
+.tile-bottom-text {
     flex: 1 1 auto;
     align-self: flex-end;
     margin: 0;
 }
 
-.tile-image-wrap {
-    flex: 0 0 180px;
+.tile-bottom-image {
     display: flex;
     justify-content: flex-end;
 }
@@ -227,6 +228,6 @@ nav {
 .tile-cover {
     width: 100%;
     height: auto;
-    max-height: 160px;
     object-fit: cover;
+    object-position: center;
 }
