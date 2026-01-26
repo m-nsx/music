@@ -356,6 +356,11 @@ nav {
     margin-top: 20px;
 }
 
+.footer-links {
+    font-family: var(--font-cafe);
+    text-decoration: none;
+}
+
 /* Ensure main content grows to fill available vertical space so footer stays at bottom */
 main.content {
     flex: 1 0 auto;
