@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MNSX — Landing</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{ --landing-accent: var(--accent-color); --landing-bg: var(--secondary-color); }
+    html,body{height:100%;margin:0}
+    .landing {
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(43,43,43,0.95) 0%, rgba(158,157,153,0.02) 55%);
+      color:var(--primary-color);
+      font-family: var(--font-akira);
+    }
+    /* animated layered shapes */
+    .bg-shapes{position:absolute;inset:0;pointer-events:none}
+    .shape{
+      position:absolute;filter:blur(30px);opacity:0.55;mix-blend-mode:screen;border-radius:40%}
+    .shape.a{width:46vmax;height:46vmax;background:radial-gradient(circle at 30% 30%, #ff4040, rgba(255,64,64,0.15));left:-10vmax;top:-12vmax;transform:rotate(12deg);}
+    .shape.b{width:36vmax;height:36vmax;background:radial-gradient(circle at 70% 70%, #c1c1bd, rgba(193,193,189,0.12));right:-8vmax;bottom:-10vmax;}
+    .shape.c{width:28vmax;height:28vmax;background:radial-gradient(circle at 50% 20%, #9e9d99, rgba(158,157,153,0.12));left:12vmax;bottom:-6vmax;}
+    @keyframes floatA{0%{transform:translateY(0) rotate(12deg)}50%{transform:translateY(-6vh) rotate(6deg)}100%{transform:translateY(0) rotate(12deg)}}
+    @keyframes floatB{0%{transform:translateY(0)}50%{transform:translateY(-4vh)}100%{transform:translateY(0)}}
+    .shape.a{animation:floatA 8s ease-in-out infinite}
+    .shape.b{animation:floatB 10s ease-in-out infinite}
+    .shape.c{animation:floatA 12s ease-in-out infinite}
+
+    .hero {
+      position:relative;
+      z-index:2;
+      text-align:center;
+      padding: clamp(24px,6vw,48px);
+      width:100%;
+      max-width:1100px;
+    }
+    .logo {display:inline-block;vertical-align:middle;margin-bottom:18px}
+    .logo img{height:92px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.32));}
+    .title{font-family:var(--font-stretchpro);font-size:clamp(36px,8vw,96px);line-height:0.9;letter-spacing:0.02em;color:var(--secondary-color);margin:0}
+
+    /* animated reveal for title */
+    .title span{display:inline-block;opacity:0;transform:translateY(18px);animation:reveal 900ms cubic-bezier(.2,.9,.2,1) forwards}
+    .title span:nth-child(1){animation-delay:120ms}
+    .title span:nth-child(2){animation-delay:260ms}
+    .title span:nth-child(3){animation-delay:380ms}
+    @keyframes reveal{to{opacity:1;transform:none}}
+
+    .cta{display:inline-flex;gap:14px;align-items:center;padding:14px 22px;border-radius:14px;background:var(--accent-color);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,0.35);transition:transform .22s ease,box-shadow .22s ease}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,0.45)}
+
+    /* small accessibility cue */
+    .meta-line{margin-top:14px;color:rgba(255,255,255,0.75);font-family:var(--font-cafe)}
+
+    /* responsive adjustments */
+    @media (max-width:720px){.shape{filter:blur(18px);opacity:0.6}.logo img{height:68px}}
+
+    /* fade-out transition before navigating to homepage */
+    .landing.transition-out { opacity: 0; transform: scale(0.995); transition: opacity 480ms ease, transform 480ms ease; }
+  </style>
+</head>
+<body>
+  <div class="landing">
+    <div class="bg-shapes" aria-hidden="true">
+      <div class="shape a"></div>
+      <div class="shape b"></div>
+      <div class="shape c"></div>
+    </div>
+
+    <div class="hero">
+      <h1 class="title" style="font-size: clamp(206px,8vw,206px);"><span>MNSX</span></h1>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const title = document.querySelector('.title');
+      if(!title) return;
+      const text = title.textContent.trim();
+      const parts = text.split(' ');
+      title.innerHTML = parts.map(p=>`<span>${p}</span>`).join(' ');
+
+      // after 2s, play a quick exit animation then go to index.html
+      const WAIT = 1000;
+      const landing = document.querySelector('.landing');
+      setTimeout(()=>{
+        if(landing){
+          landing.classList.add('transition-out');
+          // wait for the transition to complete (match CSS 480ms)
+          setTimeout(()=> { window.location.href = 'index.html'; }, 520);
+        } else {
+          window.location.href = 'index.html';
+        }
+      }, WAIT);
+    })();
+  </script>
+</body>
+</html>

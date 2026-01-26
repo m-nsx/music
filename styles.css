@@ -126,13 +126,9 @@ nav {
 }
 
 .brand-title {
-    font-family: var(--font-stretchpro);
+    font-family: var(--font-akira);
     font-size: 2.5em;
     margin: 0;
-}
-
-.brand-title {
-    transform: scaleY(1.6);
 }
 
 .nav-list {
@@ -356,9 +352,25 @@ nav {
     margin-top: 20px;
 }
 
+/* Footer links: remove default link formatting (underline, blue/purple colors) */
+.footer a,
+.footer a:visited,
+.footer a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Ensure hover/focus does not change color or add underline */
+.footer a:hover,
+.footer a:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
 .footer-links {
     font-family: var(--font-cafe);
     text-decoration: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 /* Ensure main content grows to fill available vertical space so footer stays at bottom */

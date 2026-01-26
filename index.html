@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mnsx</title>
     <link rel="stylesheet" href="styles.css">
+        <script>
+            // If arriving on the site root (/) or directly to index.html, show landing once.
+            (function(){
+                try{
+                    const p = location.pathname || '/';
+                    const isRoot = p === '/' || p.endsWith('/index.html');
+                    // only redirect when on root and landing hasn't been shown in this browser
+                    if(isRoot && !localStorage.getItem('mnsx_seen_landing')){
+                        localStorage.setItem('mnsx_seen_landing', '1');
+                        // navigate to landing page
+                        location.href = 'landing.html';
+                    }
+                }catch(e){ /* ignore */ }
+            })();
+        </script>
 </head>
 
 <body>
