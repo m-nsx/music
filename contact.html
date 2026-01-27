@@ -6,6 +6,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mnsx</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-title {
+            font-family: var(--font-akira);
+            font-size: 3.2rem;
+            margin-top: 24px;
+            color: var(--secondary-color);
+            text-align: center;
+            display: inline-block; /* shrink to the text width so we can match socials width */
+        }
+
+        .contact-sub {
+            color: var(--accent-color);
+            margin-top: 6px;
+            margin-bottom: 18px;
+            font-family: var(--font-akira);
+            text-align: center;
+        }
+
+        .content { text-align: center; }
+
+        .contact-text { 
+            color: var(--secondary-color);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Social buttons layout */
+        .socials-outer {
+            display:flex;
+            justify-content:center;
+            margin-top: 24px;
+            padding: 0 12px;
+        }
+
+        .socials-box {
+            padding:20px;
+            background-color: var(--secondary-color);
+            border-radius:12px;
+            display:flex;
+            gap:18px;
+            align-items:center;
+            justify-content:center;
+            flex-wrap:wrap; /* allow multiple rows when buttons don't fit */
+            width: auto; /* width set by JS to match title */
+            max-width: 100%;
+        }
+
+        .social-btn {
+            position: relative;
+            z-index: 1;
+            width:84px;
+            height:84px;
+            display:inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: transparent;
+            text-decoration: none;
+            transition: transform 180ms ease;
+            overflow: hidden;
+            flex: 0 0 84px; /* prevent buttons from shrinking */
+        }
+
+        /* overlay for gradient/solid hover backgrounds; opacity transitions in 50ms */
+        .social-btn::before{
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: inherit;
+            background: var(--social-hover, rgba(255,255,255,0.02));
+            opacity: 0;
+            transition: opacity 200ms ease;
+        }
+
+        .social-btn:hover{ transform: translateY(-2px); }
+
+        /* Per-button hover colors (set --social-hover on the specific button class) */
+        .social-linktree { --social-hover: #00c86b; }
+        .social-instagram { --social-hover: linear-gradient(135deg,#f58529 0%,#dd2a7b 50%,#515bd4 100%); }
+        .social-bandcamp { --social-hover: #19819c; }
+        .social-soundcloud { --social-hover: #ff5500; }
+        .social-spotify { --social-hover: #1db954; }
+        .social-deezer { --social-hover: #a238ff; }
+        .social-ytm { --social-hover: #ff0000; }
+
+        .social-btn img{
+            position: relative;
+            z-index: 2;
+            width:48px;
+            height:48px;
+            object-fit:contain;
+            display:block;
+            transition: transform 200ms ease, filter 200ms ease;
+        }
+
+        .social-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Mail contact styles */
+        .mail-wrapper {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            padding: 0 12px;
+        }
+
+        .mail-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center; /* center icon + text */
+            gap: 12px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: var(--font-akira);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+            transition: transform 160ms ease;
+            overflow: hidden;
+            max-width: 100%;
+            cursor: pointer;
+            text-align: center;
+            height: 48px;
+        }
+
+        .mail-link::before{
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: inherit;
+            /* stacked gradients inspired by landing.html: subtle radial color spots + soft linear base */
+            background:
+                radial-gradient(circle at 30% 30%, rgba(255,64,64,0.18), rgba(255,64,64,0) 30%),
+                radial-gradient(circle at 70% 70%, rgba(193,193,189,0.12), rgba(193,193,189,0) 35%),
+                linear-gradient(180deg, rgba(43,43,43,0.12) 0%, rgba(158,157,153,0.02) 55%);
+            opacity: 0;
+            transition: opacity 280ms ease;
+        }
+
+        .mail-link:hover::before { opacity: 1; }
+
+        .mail-text{ z-index: 1; font-size: 1rem; color: var(--primary-color); }
+  </style>
 </head>
 
 <body>
@@ -30,7 +178,39 @@
     </header>
 
     <main class = "content">
-        CONTACT PAGE
+        <div id="contactTitle" class="contact-title">
+            Let's connect !
+        </div>
+        <div class="socials-outer">
+            <div id="socialsBox" class="socials-box">
+                <a class="social-btn social-linktree" href="https://linktr.ee/mnsx_" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/linktree.png" alt="linktree logo">
+                </a>
+                <a class="social-btn social-deezer" href="https://link.deezer.com/s/32hjblM5Z4aoTQTDuLfum" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/deezer.png" alt="deezer logo">
+                </a>
+                <a class="social-btn social-spotify" href="https://open.spotify.com/intl-fr/artist/0z4MOa1IvJQ09ilXmFb5zp?si=79350763564b48e1" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/spotify.png" alt="spotify logo">
+                </a>
+                <a class="social-btn social-bandcamp" href="https://mnsx.bandcamp.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/bandcamp.png" alt="bandcamp logo">
+                </a>
+                <a class="social-btn social-soundcloud" href="https://soundcloud.com/mnsxcreator" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/soundcloud.png" alt="soundcloud logo">
+                </a>
+                <a class="social-btn social-instagram" href="https://www.instagram.com/mnsx_music?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/insta.png" alt="instagram logo">
+                </a>
+                <a class="social-btn social-ytm" href="https://music.youtube.com/playlist?list=OLAK5uy_lxNIhzpxzE0QGkSniDyMjZOmEL35i_cj0&si=04YeYacubbZR3drS" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/img/ytm.png" alt="ytm logo">
+                </a>
+            </div>
+            </div>
+            <div class="mail-wrapper">
+                <a id="mailLink" class="mail-link" href="mailto:mnsxcontact@gmail.com" aria-label="Send email to mnsxcontact@gmail.com">
+                    <span class="mail-text">mnsxcontact@gmail.com</span>
+                </a>
+            </div>
     </main>
 
     <footer class="footer">
@@ -39,6 +219,40 @@
         </div>
         <p>&copy; 2024 MNSX</p>
     </footer>
+
+    <script>
+        (function(){
+            const title = document.getElementById('contactTitle');
+            const box = document.getElementById('socialsBox');
+            if(!title || !box) return;
+
+            function syncWidth(){
+                // measure the title's rendered width and apply to the socials box
+                const w = Math.ceil(title.getBoundingClientRect().width);
+                // ensure at least the width of one button
+                const min = 84; // one button width
+                box.style.width = Math.max(w, min) + 'px';
+                // also apply same width to the mail link so it lines up
+                const mail = document.getElementById('mailLink');
+                if(mail) mail.style.width = box.style.width;
+            }
+
+            // Wait for fonts to load for accurate measurement
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(syncWidth);
+            } else {
+                window.addEventListener('load', syncWidth);
+            }
+
+            // initial and on resize (debounced)
+            document.addEventListener('DOMContentLoaded', syncWidth);
+            let _t;
+            window.addEventListener('resize', function(){
+                clearTimeout(_t);
+                _t = setTimeout(syncWidth, 80);
+            });
+        })();
+    </script>
 
 </body>
 </html>
