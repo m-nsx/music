@@ -195,12 +195,12 @@ nav {
 @media (max-width: 1200px) {
     .topbar {
         height: auto;
-        padding: 20px;
+        padding: 14px 16px;
     }
 
     .brand-title {
-        font-size: 3em;
-        margin-left: 24px;
+        font-size: 2em;
+        margin-left: 12px;
     }
 
     .brand-title:hover {
@@ -213,6 +213,9 @@ nav {
 
     .menu-toggle {
         display: inline-flex;
+        font-size: 1.4em;
+        padding: 8px 12px;
+        letter-spacing: 0.06em;
     }
 
     .nav-list {
@@ -225,10 +228,10 @@ nav {
         box-shadow: 0 12px 30px rgba(0,0,0,0.28);
         flex-direction: column;
         align-items: center;
-        gap: 24px;
-        padding: 48px;
-        min-width: 90%;
-        font-size: 2.6em;
+        gap: 16px;
+        padding: 20px;
+        min-width: 88%;
+        font-size: 2em;
         opacity: 0;
         transform: translateY(-14px);
         pointer-events: none;
@@ -644,7 +647,6 @@ nav {
 .bdesctext {
     font-family: var(--font-cafe);
     font-size: 1em;
-    margin: 0;
     padding: 0;
     margin-bottom: 250px;
 }
