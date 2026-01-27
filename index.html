@@ -22,6 +22,154 @@
                 }catch(e){ /* ignore */ }
             })();
         </script>
+    <style>
+        .contact-title {
+            font-family: var(--font-akira);
+            font-size: 3.2rem;
+            margin-top: 24px;
+            color: var(--secondary-color);
+            text-align: center;
+            display: inline-block; /* shrink to the text width so we can match socials width */
+        }
+
+        .contact-sub {
+            color: var(--accent-color);
+            margin-top: 6px;
+            margin-bottom: 18px;
+            font-family: var(--font-akira);
+            text-align: center;
+        }
+
+        .content { text-align: center; }
+
+        .contact-text { 
+            color: var(--secondary-color);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Social buttons layout */
+        .socials-outer {
+            display:flex;
+            justify-content:center;
+            margin-top: 24px;
+            padding: 0 12px;
+        }
+
+        .socials-box {
+            padding:20px;
+            background-color: var(--secondary-color);
+            border-radius:12px;
+            display:flex;
+            gap:18px;
+            align-items:center;
+            justify-content:center;
+            flex-wrap:wrap; /* allow multiple rows when buttons don't fit */
+            width: auto; /* width set by JS to match title */
+            max-width: 100%;
+        }
+
+        .social-btn {
+            position: relative;
+            z-index: 1;
+            width:84px;
+            height:84px;
+            display:inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: transparent;
+            text-decoration: none;
+            transition: transform 180ms ease;
+            overflow: hidden;
+            flex: 0 0 84px; /* prevent buttons from shrinking */
+        }
+
+        /* overlay for gradient/solid hover backgrounds; opacity transitions in 50ms */
+        .social-btn::before{
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: inherit;
+            background: var(--social-hover, rgba(255,255,255,0.02));
+            opacity: 0;
+            transition: opacity 200ms ease;
+        }
+
+        .social-btn:hover{ transform: translateY(-2px); }
+
+        /* Per-button hover colors (set --social-hover on the specific button class) */
+        .social-linktree { --social-hover: #00c86b; }
+        .social-instagram { --social-hover: linear-gradient(135deg,#f58529 0%,#dd2a7b 50%,#515bd4 100%); }
+        .social-bandcamp { --social-hover: #19819c; }
+        .social-soundcloud { --social-hover: #ff5500; }
+        .social-spotify { --social-hover: #1db954; }
+        .social-deezer { --social-hover: #a238ff; }
+        .social-ytm { --social-hover: #ff0000; }
+
+        .social-btn img{
+            position: relative;
+            z-index: 2;
+            width:48px;
+            height:48px;
+            object-fit:contain;
+            display:block;
+            transition: transform 200ms ease, filter 200ms ease;
+        }
+
+        .social-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Mail contact styles */
+        .mail-wrapper {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            padding: 0 12px;
+        }
+
+        .mail-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center; /* center icon + text */
+            gap: 12px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: var(--font-akira);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+            transition: transform 160ms ease, opacity 200ms ease;
+            overflow: hidden;
+            max-width: 100%;
+            cursor: pointer;
+            text-align: center;
+            height: 48px;
+        }
+
+        .mail-link::before{
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: inherit;
+            /* stacked gradients inspired by landing.html: subtle radial color spots + soft linear base */
+            background:
+                radial-gradient(circle at 30% 30%, rgba(255,64,64,0.24), rgba(255,64,64,0) 30%),
+                radial-gradient(circle at 70% 70%, rgba(193,193,189,0.16), rgba(193,193,189,0) 35%),
+                linear-gradient(180deg, rgba(43,43,43,0.16) 0%, rgba(158,157,153,0.02) 55%);
+            opacity: 0;
+            transition: opacity 280ms ease;
+        }
+
+        .mail-link:hover::before { opacity: 1; }
+
+        .mail-text{ z-index: 1; font-size: 1rem; color: var(--primary-color); }
+    </style>
 </head>
 
 <body>
@@ -127,11 +275,12 @@
                 </article>
 
                 <article class="tile">
-                    <a class="tile-link">
-                        <h2 class="tile-title">NEW CONTENT ?</h2>
+                    <a class="tile-link" href="https://on.soundcloud.com/zuWAT7PN721puJ26ZG">
+                        <h2 class="tile-title">R SONGS</h2>
                         <p class="tile-description accent">
-                            coming soon...
+                            unknown origin
                         </p>
+                        <img src="assets/img/rcover.png" class="tile-custom-cover" alt="r songs album cover art" style="height: 250px; width: 250px; transform: translateY(25px) translateX(250px);">
                     </a>
                 </article>
 
@@ -139,23 +288,141 @@
 
         </div>
 
-        <div class="fblock stacked" style="height: 1000px; background-color: var(--secondary-color);">
-            <div class="btitle" style="color: var(--tertiary-color);">
-                TEST
+        <div class="fblock stacked" style="height: 1000px; background-color: var(--primary-color);">
+            <div class="bbanner">
+                <img src="assets/img/banner.png" alt="moi ?">
+            </div>
+            <div class="btextbox">
+
+                <div class="btitle" style="color: var(--secondary-color); font-family: var(--font-stretchpro);">
+                    LASTEST RELEASE
+                </div>
+
+                <div class="bsubtitle" style="color: var(--tertiary-color); font-family: var(--font-stretchpro); font-style: italic;">
+                    LISTEN NOW ON SPOTIFY & MANY MORE
+                </div>
+
+                <div class="socials-outer">
+                    <div id="socialsBox" class="socials-box">
+                        <a class="social-btn social-deezer" href="https://link.deezer.com/s/32hjblM5Z4aoTQTDuLfum" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/deezer.png" alt="deezer logo">
+                        </a>
+                        <a class="social-btn social-spotify" href="https://open.spotify.com/intl-fr/artist/0z4MOa1IvJQ09ilXmFb5zp?si=79350763564b48e1" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/spotify.png" alt="spotify logo">
+                        </a>
+                        <a class="social-btn social-bandcamp" href="https://mnsx.bandcamp.com/" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/bandcamp.png" alt="bandcamp logo">
+                        </a>
+                        <a class="social-btn social-soundcloud" href="https://soundcloud.com/mnsxcreator" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/soundcloud.png" alt="soundcloud logo">
+                        </a>
+                        <a class="social-btn social-ytm" href="https://music.youtube.com/playlist?list=OLAK5uy_lxNIhzpxzE0QGkSniDyMjZOmEL35i_cj0&si=04YeYacubbZR3drS" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/ytm.png" alt="ytm logo">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bdesctext" style="color: var(--tertiary-color); margin-top: 20px; font-size: 0.8em; font-style: italic;">
+                    * Experiments Vol. I - 2024
+                </div>
+
             </div>
         </div>
 
         <div class="mblock stacked" style="height: 1000px; background-color: var(--accent-color);">
-            <div class="btitle" style="color: var(--tertiary-color);">
-                TEST
+            <div class="btextbox">
+
+                <div class="btitle" style="color: #ffffff;">
+                    SELECTED SAMPLES 🎧
+                </div>
+
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <p class="audio-title">Memory Leak</p>
+                        <div class="audio-time">0:00 / 0:00</div>
+                    </div>
+                    <div class="audio-controls">
+                        <button class="audio-play" aria-label="Play sample">
+                            <span class="audio-icon play">▶</span>
+                            <span class="audio-icon pause">⏸</span>
+                        </button>
+                        <div class="audio-progress" aria-label="Seek within sample">
+                            <div class="audio-progress-fill"></div>
+                            <div class="audio-progress-handle"></div>
+                        </div>
+                    </div>
+                    <audio preload="metadata">
+                        <source src="assets/sounds/memory_leak_demo.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <p class="audio-title">Forsaken</p>
+                        <div class="audio-time">0:00 / 0:00</div>
+                    </div>
+                    <div class="audio-controls">
+                        <button class="audio-play" aria-label="Play sample">
+                            <span class="audio-icon play">▶</span>
+                            <span class="audio-icon pause">⏸</span>
+                        </button>
+                        <div class="audio-progress" aria-label="Seek within sample">
+                            <div class="audio-progress-fill"></div>
+                            <div class="audio-progress-handle"></div>
+                        </div>
+                    </div>
+                    <audio preload="metadata">
+                        <source src="assets/sounds/forsaken_demo.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <p class="audio-title">Textures</p>
+                        <div class="audio-time">0:00 / 0:00</div>
+                    </div>
+                    <div class="audio-controls">
+                        <button class="audio-play" aria-label="Play sample">
+                            <span class="audio-icon play">▶</span>
+                            <span class="audio-icon pause">⏸</span>
+                        </button>
+                        <div class="audio-progress" aria-label="Seek within sample">
+                            <div class="audio-progress-fill"></div>
+                            <div class="audio-progress-handle"></div>
+                        </div>
+                    </div>
+                    <audio preload="metadata">
+                        <source src="assets/sounds/textures_demo.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="btitle" style="font-size: 2.2rem; margin-top: 50px; margin-bottom: 16px;">
+                    Interested in more music ?
+                </div>
+
+                <div class="bsubtitle" style="font-size: 1.6rem; font-style: italic;">
+                    Inquiries at
+                </div>
+
+                <div class="mail-wrapper">
+                    <a id="mailLink" class="mail-link" href="mailto:mnsxcontact@gmail.com" aria-label="Send email to mnsxcontact@gmail.com">
+                        <span class="mail-text">mnsxcontact@gmail.com</span>
+                    </a>
+                </div>
+
             </div>
         </div>
 
-        <div class="mblock" style="height: 1000px; background-color: var(--tertiary-color);">
-            <div class="btitle" style="color: var(--accent-color);">
-                TEST
+        <!-- <div class="mblock" style="height: 1000px; background-color: var(--tertiary-color);">
+            <div class="btextbox">
+                <div class="btitle" style="color: var(--accent-color);">
+                    TEST
+                </div>
             </div>
-        </div>
+        </div> -->
 
     </main>
 
@@ -244,6 +511,92 @@
             window.addEventListener('wheel', onWheel, { passive: false });
             window.addEventListener('keydown', onKey, { passive: false });
             window.addEventListener('resize', () => { target = clamp(target, 0, maxScroll()); });
+        })();
+        </script>
+
+        <script>
+        (function(){
+            const cards = document.querySelectorAll('.audio-card');
+            if(!cards.length) return;
+
+            const fmt = (sec) => {
+                if(!Number.isFinite(sec)) return '0:00';
+                const m = Math.floor(sec/60);
+                const s = Math.floor(sec%60).toString().padStart(2,'0');
+                return `${m}:${s}`;
+            };
+
+            const allAudios = [];
+            const pauseOthers = (active) => {
+                allAudios.forEach(a => {
+                    if(a !== active && !a.paused){
+                        a.pause();
+                        if(a._playBtn) a._playBtn.classList.remove('is-playing');
+                    }
+                });
+            };
+
+            function wire(card){
+                const audio = card.querySelector('audio');
+                const play = card.querySelector('.audio-play');
+                const progress = card.querySelector('.audio-progress');
+                const fill = card.querySelector('.audio-progress-fill');
+                const handle = card.querySelector('.audio-progress-handle');
+                const time = card.querySelector('.audio-time');
+                if(!audio || !play || !progress || !fill || !handle || !time) return;
+
+                allAudios.push(audio);
+                audio._playBtn = play;
+
+                const update = () => {
+                    const dur = audio.duration || 0;
+                    const cur = audio.currentTime || 0;
+                    const pct = dur ? Math.min(cur/dur,1) : 0;
+                    fill.style.width = `${pct*100}%`;
+                    const trackWidth = progress.clientWidth || 1;
+                    handle.style.left = `${pct*trackWidth}px`;
+                    time.textContent = `${fmt(cur)} / ${fmt(dur)}`;
+                };
+
+                const seek = (evt) => {
+                    const rect = progress.getBoundingClientRect();
+                    const x = Math.min(Math.max(evt.clientX - rect.left, 0), rect.width);
+                    const pct = rect.width ? x / rect.width : 0;
+                    if(Number.isFinite(audio.duration)){
+                        audio.currentTime = pct * audio.duration;
+                        update();
+                    }
+                };
+
+                play.addEventListener('click', function(){
+                    if(audio.paused){
+                        pauseOthers(audio);
+                        audio.play();
+                        play.classList.add('is-playing');
+                    } else {
+                        audio.pause();
+                        play.classList.remove('is-playing');
+                    }
+                });
+
+                audio.addEventListener('play', ()=>{ pauseOthers(audio); play.classList.add('is-playing'); });
+                audio.addEventListener('timeupdate', update);
+                audio.addEventListener('loadedmetadata', update);
+                audio.addEventListener('ended', ()=>{ play.classList.remove('is-playing'); update(); });
+
+                progress.addEventListener('click', seek);
+
+                // Drag seek
+                let dragging = false;
+                progress.addEventListener('pointerdown', (e)=>{ dragging = true; seek(e); progress.setPointerCapture(e.pointerId); });
+                progress.addEventListener('pointermove', (e)=>{ if(dragging) seek(e); });
+                progress.addEventListener('pointerup',   (e)=>{ if(dragging){ dragging=false; progress.releasePointerCapture(e.pointerId); }});
+                progress.addEventListener('pointerleave',(e)=>{ if(dragging){ dragging=false; try{ progress.releasePointerCapture(e.pointerId);}catch(_){/*ignore*/} }});
+
+                update();
+            }
+
+            cards.forEach(wire);
         })();
         </script>
     </footer>
