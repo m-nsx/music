@@ -10,13 +10,14 @@
     --font-proelium: 'Proelium', sans-serif;
     --font-summerdreamsans: 'SummerDreamSans', sans-serif;
     --font-cafe: 'cafe', sans-serif;
-    --font-size-base: 16px;
-    --spacing-unit: 8px;
+    --font-size-base: clamp(14px, 2vw, 18px);
+    --spacing-unit: clamp(6px, 1vw, 10px);
     --font-default: 'Impact', sans-serif;
     --tile-bg: var(--tertiary-color);
     --tile-hover-bg: var(--secondary-color);
     --tile-transition: 320ms;
-    --stacked-offset: 5rem; /* desktop sticky offset without px */
+    --stacked-offset: 5rem;
+    --content-padding: clamp(0.75rem, 3vw, 1.5rem);
 }
 
 @font-face {
@@ -102,8 +103,9 @@ nav {
 .topbar {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    padding: 30px;
-    height: 100px;
+    padding: clamp(0.75rem, 2vw, 1.875rem);
+    height: auto;
+    min-height: clamp(3.5rem, 8vw, 6.25rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -132,7 +134,7 @@ nav {
 
 .brand-title {
     font-family: var(--font-akira);
-    font-size: 2.5em;
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
     transition: color 0.18s ease;
 }
 
@@ -153,7 +155,7 @@ nav {
     font-style: italic;
     color: var(--primary-color);
     text-decoration: none;
-    font-size: 2.5em;
+    font-size: clamp(1.1rem, 3vw, 2.5rem);
     transition: color 0.18s ease, opacity 0.18s ease;
 }
 
@@ -172,12 +174,12 @@ nav {
 
 .menu-toggle {
     display: none;
-    margin-right: 10px;
-    border-radius: 12px;
-    padding: 12px 18px;
+    margin-right: clamp(0.5rem, 1vw, 0.625rem);
+    border-radius: 0.75rem;
+    padding: clamp(0.4rem, 1.5vw, 0.75rem) clamp(0.6rem, 2vw, 1.125rem);
     color: var(--primary-color);
     font-family: var(--font-akira);
-    font-size: 3em;
+    font-size: clamp(0.9rem, 2.5vw, 1.5rem);
     letter-spacing: 0.08em;
     align-items: center;
     justify-content: center;
@@ -192,48 +194,28 @@ nav {
 
 .menu-bar { display: none; }
 
+/* Tablet breakpoint */
 @media (max-width: 1200px) {
-    .topbar {
-        height: auto;
-        padding: 14px 16px;
-    }
-
-    .brand-title {
-        font-size: 2em;
-        margin-left: 12px;
-    }
-
-    .brand-title:hover {
-        color: var(--primary-color);
-    }
-
-    .topbar-right {
-        gap: 10px;
-    }
-
     .menu-toggle {
         display: inline-flex;
-        font-size: 1.4em;
-        padding: 8px 12px;
-        letter-spacing: 0.06em;
     }
 
     .nav-list {
         position: absolute;
         left: 5%;
-        top: 150px;
+        top: clamp(4rem, 12vw, 9.375rem);
         background: rgba(43,43,43,0.96);
         border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 14px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+        border-radius: 0.875rem;
+        box-shadow: 0 0.75rem 1.875rem rgba(0,0,0,0.28);
         flex-direction: column;
         align-items: center;
-        gap: 16px;
-        padding: 20px;
+        gap: clamp(0.75rem, 2vw, 1rem);
+        padding: clamp(1rem, 3vw, 1.25rem);
         min-width: 88%;
-        font-size: 2em;
+        font-size: clamp(1rem, 3vw, 2rem);
         opacity: 0;
-        transform: translateY(-14px);
+        transform: translateY(-0.875rem);
         pointer-events: none;
         visibility: hidden;
         transition: transform 220ms ease, opacity 220ms ease, visibility 0s linear 220ms;
@@ -249,7 +231,7 @@ nav {
 
     .nav-list li {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-0.625rem);
         transition: transform 240ms ease, opacity 240ms ease;
     }
 
@@ -264,8 +246,37 @@ nav {
     .nav-list.is-open li:nth-child(4) { transition-delay: 160ms; }
 
     .nav-list a {
-        font-size: 1.6em;
+        font-size: clamp(1rem, 3vw, 1.6rem);
     }
+}
+
+/* Large tablet / small laptop */
+@media (max-width: 992px) {
+    .tiles, .tline { --cols: 2; }
+}
+
+/* Small tablet */
+@media (max-width: 768px) {
+    .tiles, .tline { --cols: 1; }
+    
+    .tile-title { font-size: clamp(1.4rem, 5vw, 2.2rem); }
+    .tile-subtitle { font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
+    .tile-description { font-size: clamp(1rem, 3vw, 1.3rem); }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+    .nav-list {
+        left: 2.5%;
+        min-width: 95%;
+        padding: clamp(0.75rem, 4vw, 1rem);
+    }
+    
+    .tile {
+        padding: clamp(0.75rem, 4vw, 1.25rem);
+    }
+    
+    .tile-title { font-size: clamp(1.2rem, 5vw, 1.8rem); }
 }
 
 .gtiles {
@@ -276,13 +287,13 @@ nav {
     /* Use Flexbox so tiles in a row always fill the full width and
        grow equally; --cols controls the target items per row. */
     --cols: 3; /* default columns; override on .tiles or :root as needed */
-    --gap: 20px;
+    --gap: clamp(0.75rem, 2vw, 1.25rem);
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+    padding-top: var(--content-padding);
     align-items: stretch; /* ensure items stretch to the row height */
 }
 
@@ -295,9 +306,7 @@ nav {
     flex: 1 1 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
 }
 
-@media (max-width: 1200px) {
-    .tiles, .tline { --cols: 1; }
-}
+/* Note: tile columns handled in breakpoints above */
 
 /* Fallback classes (use these if the flex/calc approach fails on the host)
    Add one of these classes to the `.tiles` element: `cols-2`, `cols-3`, `cols-4` */
@@ -337,14 +346,14 @@ nav {
 .tile {
     background-color: var(--tile-bg);
     color: var(--secondary-color);
-    padding: 20px;
+    padding: clamp(1rem, 3vw, 1.25rem);
     box-sizing: border-box;
     font-family: var(--font-summerdreamsans);
     margin: 0;
     vertical-align: top;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: clamp(0.75rem, 2vw, 1rem);
     transition: background-color var(--tile-transition) ease, transform var(--tile-transition) ease;
     text-align: left;
 }
@@ -364,22 +373,22 @@ nav {
 
 
 .tile-title {
-    font-size: 2.6em;
-    margin: 0 0 2px 0;
+    font-size: clamp(1.5rem, 4vw, 2.6rem);
+    margin: 0 0 0.125rem 0;
     line-height: 1.12;
 }
 
 .tile-subtitle {
-    font-size: 1.2em;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
     font-family: var(--font-summerdreamsans);
-    margin: 0 0 2px 0;
+    margin: 0 0 0.125rem 0;
     line-height: 1.18;
     display: block;
     color: var(--accent-color);
 }
 
 .tile-description {
-    font-size: 1.4em;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
     font-family: var(--font-cafe);
     margin: 0;
     line-height: 1.4;
@@ -466,12 +475,11 @@ nav {
 
 /* Audio demo player */
 .audio-card {
-    margin: 32px auto 0 auto;
-    padding: 20px;
+    margin: clamp(1rem, 4vw, 2rem) auto 0 auto;
+    padding: clamp(0.75rem, 3vw, 1.25rem);
     background: var(--secondary-color);
-    width: 60%;
-    max-width: 1200px;
-    min-width: 280px;
+    width: clamp(280px, 90%, 1200px);
+    max-width: 100%;
 }
 
 .audio-header {
@@ -484,7 +492,7 @@ nav {
 
 .audio-title {
     font-family: var(--font-akira);
-    font-size: 1.6em;
+    font-size: clamp(1rem, 3vw, 1.6rem);
     margin: 0;
 }
 
@@ -585,23 +593,31 @@ nav {
 
 .fblock {
     width: 100%;
-    min-height: 0;
+    min-height: auto;
+    height: auto;
     background-color: var(--primary-color);
     text-align: center;
     font-family: var(--font-akira);
-    font-size: 2em;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    padding: clamp(1.5rem, 5vw, 2.5rem) var(--content-padding);
+    box-sizing: border-box;
+    overflow: visible;
 }
 
 .mblock {
     width: 100%;
-    min-height: 0;
+    min-height: auto;
+    height: auto;
     background-color: var(--primary-color);
     text-align: center;
     font-family: var(--font-akira);
-    font-size: 2em;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    padding: clamp(1.5rem, 5vw, 2.5rem) var(--content-padding);
+    box-sizing: border-box;
+    overflow: visible;
     position: sticky;
     top: 0;
-    z-index: 2; /* later mblocks naturally stack above previous ones */
+    z-index: 2;
 }
 
 .bbanner {
@@ -619,20 +635,20 @@ nav {
 }
 
 .btextbox {
-    padding: 20px;
+    padding: clamp(1rem, 4vw, 1.5rem);
 }
 
 /* Classes de texte pour les blocks de types M et B */
 .btitle {
     font-family: var(--font-akira);
-    font-size: 3em;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     margin: 0;
     padding: 0;
 }
 
 .bsubtitle {
     font-family: var(--font-summerdreamsans);
-    font-size: 1.5em;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     margin: 0;
     padding: 0;
 }
@@ -651,10 +667,11 @@ nav {
     margin-bottom: 250px;
 }
 
+/* Tablet block adjustments */
 @media (max-width: 1200px) {
     .fblock,
     .mblock {
-        padding: 32px 16px;
+        padding: clamp(2rem, 6vw, 3rem) clamp(1rem, 4vw, 2rem);
         text-align: center;
     }
 
@@ -665,29 +682,77 @@ nav {
     }
 
     .bbanner {
-        margin-bottom: 16px;
+        margin-bottom: clamp(0.75rem, 2vw, 1rem);
     }
 
     .bbanner img {
-        max-height: 320px;
+        max-height: none;
+        height: auto;
         object-fit: cover;
     }
 
-    .btextbox {
-        padding: 16px;
-    }
-
-    .btitle { font-size: 2.2em; }
-    .bsubtitle { font-size: 1.3em; }
-    .btext { font-size: 1.05em; }
-    .bdesctext { font-size: 0.95em; }
-
     .tile-custom-cover {
-        max-height: 240px;
+        max-height: clamp(10rem, 30vw, 15rem);
     }
 
     .bdesctext {
-        margin-bottom: 48px;
+        margin-bottom: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .socials-outer {
+        width: 100%;
+        padding: 0 clamp(0.5rem, 2vw, 1rem);
+    }
+    
+    .socials-box {
+        width: 100%;
+        padding: clamp(1rem, 3vw, 1.5rem);
+        gap: clamp(0.75rem, 2vw, 1.125rem);
+    }
+}
+
+/* Phone block adjustments */
+@media (max-width: 480px) {
+    .fblock,
+    .mblock {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        padding: clamp(1.5rem, 6vw, 2.5rem) clamp(0.75rem, 3vw, 1.25rem);
+    }
+    
+    .btextbox {
+        padding: clamp(1rem, 4vw, 1.5rem);
+    }
+    
+    .socials-box {
+        padding: clamp(0.75rem, 3vw, 1rem);
+        gap: clamp(0.5rem, 2vw, 0.75rem);
+    }
+    
+    .social-btn {
+        flex: 0 0 clamp(3rem, 15vw, 4.5rem);
+        width: clamp(3rem, 15vw, 4.5rem);
+        height: clamp(3rem, 15vw, 4.5rem);
+    }
+    
+    .social-btn img {
+        width: clamp(1.75rem, 8vw, 2.5rem);
+        height: clamp(1.75rem, 8vw, 2.5rem);
+    }
+    
+    .audio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .audio-time {
+        min-width: auto;
+        text-align: left;
+    }
+    
+    .audio-play {
+        width: clamp(2.5rem, 10vw, 3.5rem);
+        height: clamp(2.5rem, 10vw, 3.5rem);
     }
 }
 
@@ -709,10 +774,10 @@ nav {
 .footer {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    padding: 20px;
+    padding: clamp(1rem, 3vw, 1.25rem);
     text-align: center;
     font-family: var(--font-akira);
-    font-size: 1em;
+    font-size: clamp(0.75rem, 2vw, 1rem);
 }
 
 /* Footer links: remove default link formatting (underline, blue/purple colors) */

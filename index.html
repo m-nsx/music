@@ -72,8 +72,8 @@
         .social-btn {
             position: relative;
             z-index: 1;
-            width:84px;
-            height:84px;
+            width: 84px;
+            height: 84px;
             display:inline-flex;
             align-items: center;
             justify-content: center;
@@ -171,16 +171,16 @@
         .mail-text{ z-index: 1; font-size: 1rem; color: var(--primary-color); }
 
             @media (max-width: 1200px) {
-                .contact-title { font-size: 5rem; margin-top: 150px; }
-                .contact-sub { font-size: 1.6rem; }
+                .contact-title { font-size: clamp(2rem, 8vw, 5rem); margin-top: clamp(2rem, 10vw, 9rem); }
+                .contact-sub { font-size: clamp(1rem, 3vw, 1.6rem); }
                 .socials-outer { width: 100%; margin-left: auto; margin-right: auto; }
-                .socials-box { width: 100%; gap: 24px; padding: 24px; }
-                .social-btn { width: 150px; height: 150px; flex: 0 0 150px; border-radius: 30px; border: var(--secondary-color); }
-                .social-btn img { width: 75px; height: 75px; }
+                .socials-box { width: 100%; gap: clamp(0.75rem, 3vw, 1.5rem); padding: clamp(1rem, 4vw, 1.5rem); }
+                .social-btn { width: clamp(3.5rem, 18vw, 9rem); height: clamp(3.5rem, 18vw, 9rem); flex: 0 0 clamp(3.5rem, 18vw, 9rem); border-radius: clamp(0.5rem, 2vw, 1.875rem); }
+                .social-btn img { width: clamp(2rem, 10vw, 4.5rem); height: clamp(2rem, 10vw, 4.5rem); }
                 .mail-wrapper { width: 100%; margin-left: auto; margin-right: auto; }
-                .mail-link { width: 80%; height: auto; padding: 16px 20px; }
-                .mail-text { font-size: 2rem; }
-                .audio-card { width: 80%; }
+                .mail-link { width: 90%; height: auto; padding: clamp(0.75rem, 3vw, 1rem) clamp(1rem, 4vw, 1.25rem); }
+                .mail-text { font-size: clamp(0.9rem, 3vw, 2rem); }
+                .audio-card { width: 90%; }
             }
 
     </style>
