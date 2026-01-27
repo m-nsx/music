@@ -387,3 +387,24 @@ main.content {
 *, *::before, *::after {
     box-sizing: border-box;
 }
+
+/* Page transition helpers: smooth enter/exit between pages */
+html.is-loading body {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+html.is-loaded body {
+    opacity: 1;
+    transform: none;
+    transition: opacity 360ms cubic-bezier(.2,.9,.2,1), transform 360ms cubic-bezier(.2,.9,.2,1);
+}
+
+html.is-exiting body {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 360ms cubic-bezier(.2,.9,.2,1), transform 360ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* Disable pointer events while exiting/loading to avoid double clicks */
+html.is-loading *, html.is-exiting * { pointer-events: none; }

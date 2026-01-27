@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mnsx</title>
     <link rel="stylesheet" href="styles.css">
+    <script>document.documentElement.classList.add('is-loading');</script>
     <style>
         .contact-title {
             font-family: var(--font-akira);
@@ -127,7 +128,7 @@
             text-decoration: none;
             font-family: var(--font-akira);
             box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-            transition: transform 160ms ease;
+            transition: transform 160ms ease, opacity 200ms ease;
             overflow: hidden;
             max-width: 100%;
             cursor: pointer;
@@ -151,6 +152,8 @@
         }
 
         .mail-link:hover::before { opacity: 1; }
+
+        .mail-link:hover { opacity: 0.9; }
 
         .mail-text{ z-index: 1; font-size: 1rem; color: var(--primary-color); }
   </style>
@@ -253,6 +256,8 @@
             });
         })();
     </script>
+
+    <script src="assets/js/page-transitions.js"></script>
 
 </body>
 </html>
