@@ -78,6 +78,7 @@
 
 html {
     height: 100%;
+    scroll-behavior: smooth; /* smooth anchor jumps and programmatic scrolls */
 }
 
 body {
@@ -163,6 +164,10 @@ nav {
 
 .nav-list a.focus {
     color: var(--tertiary-color);
+}
+
+.gtiles {
+    margin-bottom: 20px;
 }
 
 .tiles, .tline {
@@ -348,6 +353,66 @@ nav {
     margin: 0;
 }
 
+.fblock {
+    width: 100%;
+    min-height: 100px;
+    background-color: var(--primary-color);
+    text-align: center;
+    font-family: var(--font-akira);
+    font-size: 2em;
+    padding: 20px;
+}
+
+.mblock {
+    width: 100%;
+    min-height: 100px;
+    background-color: var(--primary-color);
+    text-align: center;
+    font-family: var(--font-akira);
+    font-size: 2em;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 2; /* later mblocks naturally stack above previous ones */
+}
+
+/* Classes de texte pour les blocks de types M et B */
+.btitle {
+    font-family: var(--font-akira);
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+}
+
+.bsubtitle {
+    font-family: var(--font-summerdreamsans);
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+.btext {
+    font-family: var(--font-cafe);
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+}
+
+.bdesctext {
+    font-family: var(--font-cafe);
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+/* Optional helper to pin any section (e.g., the tiles wrapper) at the top until the next sticky block takes over. */
+.stacked {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: inherit;
+}
+
 .footer {
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -355,7 +420,6 @@ nav {
     text-align: center;
     font-family: var(--font-akira);
     font-size: 1em;
-    margin-top: 20px;
 }
 
 /* Footer links: remove default link formatting (underline, blue/purple colors) */
