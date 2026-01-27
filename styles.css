@@ -16,7 +16,7 @@
     --tile-bg: var(--tertiary-color);
     --tile-hover-bg: var(--secondary-color);
     --tile-transition: 320ms;
-    --stacked-offset: 5rem;
+    --stacked-offset: 8.5rem;
     --content-padding: clamp(0.75rem, 3vw, 1.5rem);
 }
 
@@ -599,7 +599,7 @@ nav {
     text-align: center;
     font-family: var(--font-akira);
     font-size: clamp(1.25rem, 3vw, 2rem);
-    padding: clamp(1.5rem, 5vw, 2.5rem) var(--content-padding);
+    padding: 0;
     box-sizing: border-box;
     overflow: visible;
 }
