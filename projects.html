@@ -87,7 +87,16 @@
         <p>&copy; 2024 MNSX</p>
     </footer>
 
-    <script src="assets/js/page-transitions.js"></script>
+        <script>
+        (function(){
+            const TRANSITION_MS = 360;
+            function onReady(){ document.documentElement.classList.remove('is-loading'); void document.documentElement.offsetWidth; document.documentElement.classList.add('is-loaded'); }
+            function handleClick(e){ if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return; const a=e.target.closest('a'); if(!a) return; const href=a.getAttribute('href'); if(!href) return; if(a.target&&a.target!==''||href.indexOf('mailto:')===0||href.indexOf('tel:')===0) return; if(href.startsWith('http')&&new URL(href,location.href).origin!==location.origin) return; if(href.startsWith('#')) return; const targetUrl=new URL(href,location.href).href; if(targetUrl===location.href) return; e.preventDefault(); document.documentElement.classList.add('is-exiting'); setTimeout(()=>{ location.href=targetUrl }, TRANSITION_MS+30); }
+            if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', onReady); } else { onReady(); }
+            document.addEventListener('click', handleClick, true);
+            window.addEventListener('pageshow', function(e){ if(e.persisted){ document.documentElement.classList.remove('is-exiting'); document.documentElement.classList.remove('is-loading'); document.documentElement.classList.add('is-loaded'); } });
+        })();
+        </script>
 
 </body>
 </html>
