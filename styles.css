@@ -15,7 +15,7 @@
     --font-default: 'Impact', sans-serif;
     --tile-bg: var(--tertiary-color);
     --tile-hover-bg: var(--secondary-color);
-    --tile-transition: 320ms;
+    --tile-transition: 500ms;
     --stacked-offset: 9rem;
     --content-padding: clamp(0.75rem, 3vw, 1.5rem);
 }
