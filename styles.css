@@ -103,7 +103,7 @@ nav {
 .topbar {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    padding: clamp(0.75rem, 2vw, 1.875rem);
+    /* padding: clamp(0.75rem, 2vw, 1.875rem); */
     height: auto;
     min-height: clamp(3.5rem, 8vw, 6.25rem);
     display: flex;
@@ -149,6 +149,7 @@ nav {
     gap: 20px;
     padding: 5px;
     align-items: center;
+    margin-right: 2rem;
 }
 
 .nav-list a {
