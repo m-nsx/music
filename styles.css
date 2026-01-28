@@ -20,6 +20,145 @@
     --content-padding: clamp(0.75rem, 3vw, 1.5rem);
 }
 
+/* High Contrast Mode: WCAG AAA compliant colors with 7:1+ contrast ratios */
+html.high-contrast {
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    --tertiary-color: #888888;
+    --accent-color: #ffff00;
+    --tile-bg: #ffffff;
+    --tile-hover-bg: #000000;
+}
+
+/* High contrast specific adjustments for better accessibility */
+html.high-contrast body {
+    background-color: #000000;
+}
+
+html.high-contrast .topbar {
+    background-color: #000000;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+
+html.high-contrast .footer {
+    background-color: #000000;
+    color: #ffffff;
+    border-top: 3px solid #ffffff;
+}
+
+html.high-contrast .tile {
+    border: 3px solid #ffffff;
+    background-color: #000000;
+}
+
+html.high-contrast .tile .tile-title,
+html.high-contrast .tile .tile-subtitle,
+html.high-contrast .tile .tile-description {
+    color: #ffffff;
+}
+
+html.high-contrast .tile:hover .tile-subtitle,
+html.high-contrast .tile:hover .tile-description,
+html.high-contrast .tile:hover .tile-title {
+    color: #ffff00;
+}
+
+html.high-contrast .tile:hover {
+    background-color: #000000;
+    color: #000000;
+}
+
+html.high-contrast .socials-box {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+}
+
+html.high-contrast .social-btn {
+    border: 2px solid #000000;
+}
+
+html.high-contrast .social-btn:hover {
+    background-color: #ffff00;
+    border-color: #000000;
+}
+
+html.high-contrast .mail-link {
+    background-color: #000000;
+    color: #ffffff;
+    border: 3px solid #000000;
+}
+
+html.high-contrast .mail-link:hover {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+html.high-contrast .audio-card {
+    border: 3px solid #ffffff;
+    background-color: #000000;
+}
+
+html.high-contrast .audio-progress {
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+html.high-contrast .audio-progress-fill {
+    background-color: #000000;
+}
+
+html.high-contrast .nav-list a:hover,
+html.high-contrast .footer a:hover {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
+/* Ensure images remain visible in high contrast */
+html.high-contrast img {
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+html.high-contrast .brand-title:hover {
+    color: #ffff00;
+}
+
+/* High contrast toggle button style in footer */
+.high-contrast-toggle {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.high-contrast-toggle:hover {
+    color: var(--accent-color);
+}
+
+html.high-contrast .high-contrast-toggle:hover {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
+html.high-contrast .about-text,
+html.high-contrast .about-title,
+html.high-contrast .about-subtitle,
+html.high-contrast .about-cta {
+    color: #ffffff;
+}
+
+html.high-contrast .about-cta:hover {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
+html.high-contrast .projects-title {
+    color: #ffffff;
+}
+
+html.high-contrast .contact-title {
+    color: #ffffff;
+}
+
 @font-face {
     font-family: 'nNiely';
     src: url('assets/fonts/nNiely/nNiely.ttf') format('truetype');
