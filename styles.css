@@ -159,6 +159,33 @@ html.high-contrast .contact-title {
     color: #ffffff;
 }
 
+/* High contrast styles for mobile menu */
+html.high-contrast .menu-toggle {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+html.high-contrast .menu-toggle:hover {
+    background-color: #ffff00;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+html.high-contrast .nav-list {
+    background-color: #000000;
+    border: 3px solid #ffffff;
+}
+
+html.high-contrast .nav-list a {
+    color: #ffffff;
+}
+
+html.high-contrast .nav-list a:hover {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
 @font-face {
     font-family: 'nNiely';
     src: url('assets/fonts/nNiely/nNiely.ttf') format('truetype');
