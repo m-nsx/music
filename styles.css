@@ -16,7 +16,7 @@
     --tile-bg: var(--tertiary-color);
     --tile-hover-bg: var(--secondary-color);
     --tile-transition: 320ms;
-    --stacked-offset: 8.5rem;
+    --stacked-offset: 9rem;
     --content-padding: clamp(0.75rem, 3vw, 1.5rem);
 }
 
@@ -258,6 +258,7 @@ nav {
 
 /* Small tablet */
 @media (max-width: 768px) {
+    .tiles, .tline { --cols: 1; }
     
     .tile-title { font-size: clamp(1.4rem, 5vw, 2.2rem); }
     .tile-subtitle { font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
@@ -266,6 +267,8 @@ nav {
 
 /* Phone */
 @media (max-width: 480px) {
+    .tiles, .tline { --cols: 1; }
+    
     .nav-list {
         left: 2.5%;
         min-width: 95%;
