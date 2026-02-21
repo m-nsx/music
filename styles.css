@@ -421,11 +421,19 @@ nav {
 /* Large tablet / small laptop */
 @media (max-width: 992px) {
     .tiles, .tline { --cols: 1; }
+    .tiles .tile, .tline .tile {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 /* Small tablet */
 @media (max-width: 768px) {
     .tiles, .tline { --cols: 1; }
+    .tiles .tile, .tline .tile {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
     
     .tile-title { font-size: clamp(1.4rem, 5vw, 2.2rem); }
     .tile-subtitle { font-size: clamp(0.9rem, 2.5vw, 1.1rem); }
@@ -435,6 +443,10 @@ nav {
 /* Phone */
 @media (max-width: 480px) {
     .tiles, .tline { --cols: 1; }
+    .tiles .tile, .tline .tile {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
     
     .nav-list {
         left: 2.5%;
