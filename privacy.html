@@ -9,7 +9,6 @@
     <script src="high-contrast.js"></script>
     <script>document.documentElement.classList.add('is-loading');</script>
     <style>
-        /* Page-specific minor tweaks to keep style sober and use the 'cafe' font */
         .policy {
             font-family: var(--font-cafe);
             max-width: 56.25rem;
@@ -36,15 +35,18 @@
             margin-left: clamp(0.75rem, 2vw, 1.1rem);
             padding-left: 0;
         }
-        .policy .meta {
-            color: var(--primary-color);
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
-        }
         .policy hr {
             border: none;
             border-top: 1px solid rgba(43,43,43,0.08);
             margin: clamp(0.75rem, 2vw, 1.125rem) 0;
+        }
+
+        /* High contrast override style */
+        .high-contrast .policy p, .high-contrast .policy li {
+            color: var(--primary-color);
+        }
+        .high-contrast .policy h1, .high-contrast .policy h2 {
+            color: var(--primary-color);
         }
 
         @media (max-width: 768px) {
@@ -80,7 +82,7 @@
     <main class="content">
         <section class="policy" aria-labelledby="policy-title">
             <h1 id="policy-title">Privacy Policy</h1>
-            <div class="meta">Last updated: 26 jan. 2026</div>
+            <h2>Last updated: 26 jan. 2026</h2>
 
             <p>This Privacy Policy explains how users of the <strong>mnsx</strong> website (the "Site"), a personal music portfolio, are informed about the collection, use and protection of their personal data.</p>
 

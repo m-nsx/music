@@ -481,9 +481,14 @@
 
         <script>
         (function(){
-            // Add gentle inertial scrolling for wheel and keyboard while respecting reduced-motion.
             const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if(prefersReduced) return;
+
+            // Tuning knobs: lower values reduce perceived inertia and travel distance.
+            const WHEEL_MULTIPLIER = 0.70;
+            const SPRING = 0.78;
+            const DAMPING = 0.52;
+            const MAX_VELOCITY = 80;
 
             let target = window.scrollY;
             let current = target;
@@ -496,7 +501,7 @@
             function step(){
                 const delta = target - current;
                 // Overdamped easing: reduce energy each frame, no bounces.
-                velocity = velocity * 1 + delta * 0.01;
+                velocity = clamp((velocity * DAMPING) + (delta * SPRING), -MAX_VELOCITY, MAX_VELOCITY);
                 let next = current + velocity;
 
                 // Clamp to prevent overshoot in either direction.
@@ -530,7 +535,7 @@
             function onWheel(e){
                 if(e.ctrlKey) return; // keep zoom gesture intact
                 e.preventDefault();
-                target = clamp(target + e.deltaY, 0, maxScroll());
+                target = clamp(target + (e.deltaY * WHEEL_MULTIPLIER), 0, maxScroll());
                 enqueue();
             }
 
