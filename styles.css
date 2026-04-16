@@ -59,12 +59,20 @@ html.high-contrast .tile .tile-description {
 }
 
 html.high-contrast .tile:hover .tile-subtitle,
+html.high-contrast .tile:focus-within .tile-subtitle,
+html.high-contrast .tile.is-scroll-hover .tile-subtitle,
 html.high-contrast .tile:hover .tile-description,
-html.high-contrast .tile:hover .tile-title {
+html.high-contrast .tile:focus-within .tile-description,
+html.high-contrast .tile.is-scroll-hover .tile-description,
+html.high-contrast .tile:hover .tile-title,
+html.high-contrast .tile:focus-within .tile-title,
+html.high-contrast .tile.is-scroll-hover .tile-title {
     color: #ffff00;
 }
 
-html.high-contrast .tile:hover {
+html.high-contrast .tile:hover,
+html.high-contrast .tile:focus-within,
+html.high-contrast .tile.is-scroll-hover {
     background-color: #000000;
     color: #000000;
 }
@@ -622,12 +630,14 @@ nav {
 }
 
 .tile:hover .tile-cover,
-.tile:focus-within .tile-cover {
+.tile:focus-within .tile-cover,
+.tile.is-scroll-hover .tile-cover {
     filter: none;
 }
 
 .tile:hover .tile-custom-cover,
-.tile:focus-within .tile-custom-cover {
+.tile:focus-within .tile-custom-cover,
+.tile.is-scroll-hover .tile-custom-cover {
     filter: none;
 }
 
@@ -638,7 +648,8 @@ nav {
 
 /* Hover / focus states for tile: background and text color change */
 .tile:hover,
-.tile:focus-within {
+.tile:focus-within,
+.tile.is-scroll-hover {
     background-color: var(--tile-hover-bg);
     color: #ffffff;
 }
@@ -646,23 +657,29 @@ nav {
 /* Ensure specific text elements that had their own colors override to var(--primary-color) */
 .tile:hover .tile-subtitle,
 .tile:focus-within .tile-subtitle,
+.tile.is-scroll-hover .tile-subtitle,
 .tile:hover .tile-description,
 .tile:focus-within .tile-description,
+.tile.is-scroll-hover .tile-description,
 .tile:hover .tile-bottom-text,
 .tile:focus-within .tile-bottom-text,
+.tile.is-scroll-hover .tile-bottom-text,
 .tile:hover .tile-title,
-.tile:focus-within .tile-title {
+.tile:focus-within .tile-title,
+.tile.is-scroll-hover .tile-title {
     color: var(--primary-color);
 }
 
 .tile:hover .tile-cover .tile-custom-cover,
-.tile:focus-within .tile-cover .tile-custom-cover {
+.tile:focus-within .tile-cover .tile-custom-cover,
+.tile.is-scroll-hover .tile-cover .tile-custom-cover {
     filter: none;
 }
 
 /* Hover / focus states for tile */
 .tile:hover,
-.tile:focus-within {
+.tile:focus-within,
+.tile.is-scroll-hover {
     background-color: var(--tile-hover-bg);
     color: var(--primary-color);
 }
