@@ -34,7 +34,6 @@
             text-align: center;
         }
 
-        /* Social buttons layout */
         .socials-outer {
             display: flex;
             justify-content: center;
@@ -74,7 +73,6 @@
             flex: 0 0 clamp(3rem, 12vw, 5.25rem);
         }
 
-        /* overlay for gradient/solid hover backgrounds */
         .social-btn::before{
             content: "";
             position: absolute;
@@ -88,7 +86,6 @@
 
         .social-btn:hover{ transform: translateY(-2px); }
 
-        /* Per-button hover colors */
         .social-linktree { --social-hover: #00c86b; }
         .social-instagram { --social-hover: linear-gradient(135deg,#f58529 0%,#dd2a7b 50%,#515bd4 100%); }
         .social-bandcamp { --social-hover: #19819c; }
@@ -111,7 +108,6 @@
             opacity: 1;
         }
 
-        /* Mail contact styles */
         .mail-wrapper {
             margin-top: clamp(0.75rem, 2vw, 1.125rem);
             display: flex;
@@ -162,7 +158,7 @@
 
         .mail-text{ z-index: 1; font-size: clamp(0.75rem, 2.5vw, 1rem); color: var(--primary-color); }
 
-        /* Tablet */
+        /* Tablet format */
         @media (max-width: 1200px) {
             .contact-title { font-size: clamp(2rem, 8vw, 4rem); margin-top: clamp(3rem, 12vw, 8rem); }
             .contact-sub { font-size: clamp(0.9rem, 3vw, 1.4rem); }
@@ -173,7 +169,7 @@
             .mail-text { font-size: clamp(1rem, 4vw, 2rem); }
         }
 
-        /* Phone */
+        /* Smartphone format */
         @media (max-width: 480px) {
             .contact-title { font-size: clamp(1.5rem, 8vw, 2.5rem); margin-top: clamp(2rem, 10vw, 4rem); }
             .social-btn { width: clamp(3rem, 20vw, 5rem); height: clamp(3rem, 20vw, 5rem); flex: 0 0 clamp(3rem, 20vw, 5rem); }
@@ -267,7 +263,6 @@
                     return;
                 }
 
-                // desktop: measure the title's rendered width and apply to socials/mail
                 const w = Math.ceil(title.getBoundingClientRect().width);
                 const min = 84; // ensure at least one button fits
                 const width = Math.max(w, min);
@@ -275,14 +270,12 @@
                 if(mail) mail.style.width = width + 'px';
             }
 
-            // Wait for fonts to load for accurate measurement
             if (document.fonts && document.fonts.ready) {
                 document.fonts.ready.then(syncWidth);
             } else {
                 window.addEventListener('load', syncWidth);
             }
 
-            // initial and on resize (debounced)
             document.addEventListener('DOMContentLoaded', syncWidth);
             let _t;
             window.addEventListener('resize', function(){

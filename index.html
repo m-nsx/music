@@ -9,18 +9,17 @@
     <script src="high-contrast.js"></script>
     <script>document.documentElement.classList.add('is-loading');</script>
         <script>
-            // If arriving on the site root (/) or directly to index.html, show landing once.
             (function(){
                 try{
                     const p = location.pathname || '/';
                     const isRoot = p === '/' || p.endsWith('/index.html');
-                    // only redirect when on root and landing hasn't been shown in this browser
                     if(isRoot && !localStorage.getItem('mnsx_seen_landing')){
                         localStorage.setItem('mnsx_seen_landing', '1');
-                        // navigate to landing page
                         location.href = 'landing.html';
                     }
-                }catch(e){ /* ignore */ }
+                }catch(e){
+                    console.error('Error during landing page redirect:', e);
+                }
             })();
         </script>
     <style>
@@ -30,7 +29,7 @@
             margin-top: 24px;
             color: var(--secondary-color);
             text-align: center;
-            display: inline-block; /* shrink to the text width so we can match socials width */
+            display: inline-block;
         }
 
         .contact-sub {
@@ -65,8 +64,8 @@
             gap:18px;
             align-items:center;
             justify-content:center;
-            flex-wrap:wrap; /* allow multiple rows when buttons don't fit */
-            width: auto; /* width set by JS to match title */
+            flex-wrap:wrap;
+            width: auto;
             max-width: 100%;
         }
 
@@ -83,10 +82,9 @@
             text-decoration: none;
             transition: transform 180ms ease;
             overflow: hidden;
-            flex: 0 0 84px; /* prevent buttons from shrinking */
+            flex: 0 0 84px;
         }
 
-        /* overlay for gradient/solid hover backgrounds; opacity transitions in 50ms */
         .social-btn::before{
             content: "";
             position: absolute;
@@ -100,7 +98,6 @@
 
         .social-btn:hover{ transform: translateY(-2px); }
 
-        /* Per-button hover colors (set --social-hover on the specific button class) */
         .social-linktree { --social-hover: #00c86b; }
         .social-instagram { --social-hover: linear-gradient(135deg,#f58529 0%,#dd2a7b 50%,#515bd4 100%); }
         .social-bandcamp { --social-hover: #19819c; }
@@ -123,7 +120,6 @@
             opacity: 1;
         }
 
-        /* Mail contact styles */
         .mail-wrapper {
             margin-top: 18px;
             display: flex;
@@ -135,7 +131,7 @@
             position: relative;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* center icon + text */
+            justify-content: center;
             gap: 12px;
             padding: 12px 18px;
             border-radius: 12px;
@@ -158,7 +154,6 @@
             inset: 0;
             z-index: 0;
             border-radius: inherit;
-            /* stacked gradients inspired by landing.html: subtle radial color spots + soft linear base */
             background:
                 radial-gradient(circle at 30% 30%, rgba(255,64,64,0.24), rgba(255,64,64,0) 30%),
                 radial-gradient(circle at 70% 70%, rgba(193,193,189,0.16), rgba(193,193,189,0) 35%),
@@ -484,7 +479,7 @@
             const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if(prefersReduced) return;
 
-            // Tuning knobs: lower values reduce perceived inertia and travel distance.
+            // Parameters for smooth scroll
             const WHEEL_MULTIPLIER = 0.70;
             const SPRING = 0.78;
             const DAMPING = 0.52;
@@ -500,11 +495,9 @@
 
             function step(){
                 const delta = target - current;
-                // Overdamped easing: reduce energy each frame, no bounces.
                 velocity = clamp((velocity * DAMPING) + (delta * SPRING), -MAX_VELOCITY, MAX_VELOCITY);
                 let next = current + velocity;
 
-                // Clamp to prevent overshoot in either direction.
                 if(delta > 0 && next > target){
                     next = target;
                     velocity = 0;
@@ -533,7 +526,7 @@
             }
 
             function onWheel(e){
-                if(e.ctrlKey) return; // keep zoom gesture intact
+                if(e.ctrlKey) return;
                 e.preventDefault();
                 target = clamp(target + (e.deltaY * WHEEL_MULTIPLIER), 0, maxScroll());
                 enqueue();
@@ -653,7 +646,7 @@
     </footer>
         <script>
         (function(){
-            const TRANSITION_MS = 360; // must match CSS
+            const TRANSITION_MS = 360;
 
             function onReady(){
                 document.documentElement.classList.remove('is-loading');
