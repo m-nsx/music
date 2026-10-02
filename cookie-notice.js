@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    const storageKey = 'mnsx_cookie_notice_dismissed';
+    const storageKey = 'mnsx_cookie_notice_dismissed_v2';
     const isFrench = document.documentElement.lang.toLowerCase().startsWith('fr');
 
     try {
