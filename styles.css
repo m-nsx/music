@@ -1031,6 +1031,52 @@ nav {
     transition: color 0.3s ease, opacity 0.3s ease;
 }
 
+.cookie-notice {
+    position: fixed;
+    z-index: 1000;
+    left: clamp(0.75rem, 3vw, 1.5rem);
+    right: clamp(0.75rem, 3vw, 1.5rem);
+    bottom: clamp(0.75rem, 3vw, 1.5rem);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    padding: 1rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+    font-family: var(--font-cafe);
+    font-size: 0.9rem;
+    opacity: 1;
+    transition: opacity 320ms ease;
+}
+
+.cookie-notice.is-dismissing { opacity: 0; }
+.cookie-notice p { flex: 1; margin: 0; line-height: 1.5; }
+.cookie-notice a { color: var(--primary-color); white-space: nowrap; }
+.cookie-notice-dismiss {
+    flex: 0 0 auto;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--primary-color);
+    font: inherit;
+    cursor: pointer;
+}
+.cookie-notice a:hover,
+.cookie-notice-dismiss:hover { color: var(--accent-color); }
+
+@media (max-width: 600px) {
+    .cookie-notice { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; flex-wrap: wrap; }
+    .cookie-notice p { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cookie-notice { transition-duration: 1ms; }
+}
+
 /* Ensure main content grows to fill available vertical space so footer stays at bottom */
 main.content {
     flex: 1 0 auto;
